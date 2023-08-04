@@ -1,0 +1,23 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "todo-list-app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkoM71/todo-list.git"
+  },
+  "author": "MarkoM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkoM71/todo-list/issues"
+  },
+  "homepage": "https://github.com/MarkoM71/todo-list#readme",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
