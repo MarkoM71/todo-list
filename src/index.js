@@ -1,1 +1,1 @@
-console.log("gomitolo")
+import { createProjects } from "./projects.js";
