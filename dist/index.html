@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <title>Todo-List</title>
+    <!-- <script defer src="main.js"></script> -->
 </head>
 <body>
     <h1>Todo-List App</h1>
     <div class="container">
-        <div class="projects">
+        <div class="projects-container">
             <h2>My Projects</h2>
-            <button>ADD</button>
-            
+            <form id="project-form">
+                <button id="project-button" type="submit">ADD</button>
+                <input type="text" id="project-input" name="" id="">
+            </form>
+            <div id="project-list">
+                <!-- <div class="project"></div> -->
+            </div>
         </div>
         <div class="tasks">
-            <h2>"Project-Name"</h2>
+            <h2 id="header">Main</h2>
+            <button id="add-task">Add Task</button>
+            
         </div>
-    </div>
+    </div>    
     <script src="main.js"></script>
 </body>
+
 </html>
