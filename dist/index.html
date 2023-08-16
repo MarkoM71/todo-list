@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Todo-List</title>
     <!-- <script defer src="main.js"></script> -->
@@ -23,7 +24,22 @@
         <div class="tasks">
             <h2 id="header">Main</h2>
             <button id="add-task">Add Task</button>
-            
+            <div class="pop-up">
+                <form class="new-task-form">
+                    <span class="close">&times;</span>
+                    <legend>New Task</legend>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title">
+                    <label for="due-date">Due Date:</label>
+                    <input type="text" id="due-date">
+                    <select name="priority" class="select-priority">
+                        <option value="Low">Low</option>
+                        <option value="High">High</option>
+                    </select>
+                    <input type="submit" value="Submit Task">
+                </form>
+            </div>
+            <div class="tasks-list"></div>
         </div>
     </div>    
     <script src="main.js"></script>
