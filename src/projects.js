@@ -75,19 +75,22 @@ export function createProjects() {
 
 
     //CONSTRUCTOR TO CREATE TASK
-    function Task(title, dueDate, priority) {
+    function Task(title, dueDate, priority, checked) {
         this.title = title;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.checked = checked;
     }
 
     //ADD TASK TO PROJECT
+    
     function addTaskElements() {
         let title = document.getElementById("title").value;
         let dueDate = document.getElementById("due-date").value;
         let priority = document.querySelector(".select-priority").value;
+        let checked = false;
 
-        let newTask = new Task(title, dueDate, priority)
+        let newTask = new Task(title, dueDate, priority, checked)
         taskProperty.push(newTask);
 
     }
@@ -113,25 +116,75 @@ export function createProjects() {
         taskProperty.forEach((task, index) => {
             taskListEl.innerHTML += `
             <div class="task" id=${index}>
-                <i class ="bi bi-circle"></i>
+                <i class="bi ${task.checked ? 'bi-check-circle-fill' : 'bi bi-circle'}"
+                data-action="check" ></i>
                 <div class="title">${task.title}</div>
-                <div class="due-date">${task.dueDate}</div>
-                <div class="priority">${task.priority}</div>
-                <i class="bi bi-pencil-square"></i>
+                <div class="due-date">Due Date: ${task.dueDate}</div>
+                <div class="priority">Priority: ${task.priority}</div>
+                <i class="bi bi-pencil-square" data-action="edit"></i>
                 <i class="bi bi-trash"></i>
             <div>`
         })
-
     }
 
-    
-    
+    //CLICK EVENT LISTENER FOR ALL TODOS
+    taskListEl.addEventListener('click', (event) => {
+        const target = event.target;
+        const parentElement = target.parentNode;
+
+        if (parentElement.className !== 'task') return;
+
+        // task id
+        const task = parentElement;
+        const taskId = Number(task.id);
+
+        //target action
+        const action = target.dataset.action;
+
+        action === "check" && checkTask(taskId);
+        action === "edit" && editTask(taskId);
+        // action === "delete" && deleteTodo(taskId);
+    });
+
+    //CHECK A TASK
+    function checkTask(taskId) {
+        taskProperty = taskProperty.map((task, index) => ({
+            ...task,
+            checked: index === taskId ? !task.checked : task.checked
+        }))
+        renderTasks();
+    }
+
+    //EDIT A TASK
+    function editTask(taskId) {
+        popUpForm.style.display = "block";
+        let title = document.getElementById("title").value;
+        // let dueDate = document.getElementById("due-date").value;
+        // let priority = document.querySelector(".select-priority").value;
+        // let checked = false;
+
+        title.value = taskProperty[taskId].title.value;
+
+        console.log(title);
+        // title = taskProperty[taskId].title;
+    }
 
 }
 
 
 
+    // function checkTask(index) {
+        
+        // }
 
+        //
+
+    // alert("test");
+        // taskProperty = taskProperty.map((task, index) => ({
+        //     ...task,
+        //     checked: index === taskId ? !task.checked : task.checked
+        // }));
+        // renderTasks();
 
     // projectHeader.innerHTML = `<h2>${title}</h2>`;
     // projectHeader.innerHTML = "";
@@ -170,3 +223,25 @@ export function createProjects() {
     //     due: dueDate,
     //     taskPriority: priority,
     // }
+    
+
+
+    // 
+    //CHECK TASK
+    // const checkButton = document.getElementById('check-button');
+    // checkButton.addEventListener("click", function () {
+    //     if (checkButton.classList.contains("bi-circle")) {
+    //         checkButton.classList.remove("bi-circle");
+    //         checkButton.classList.add("bi-check-circle-fill");
+    //     }
+    //     else if (checkButton.classList.contains("bi-check-circle-fill")) {
+    //         checkButton.classList.remove("bi-check-circle-fill");
+    //         checkButton.classList.add("bi-circle");
+    //     }
+            
+    // })
+
+    // function checkTask(id) {
+    //     console.log("Gomitolo");
+    // }
+    
